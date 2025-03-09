@@ -1,4 +1,4 @@
-### [S-#] Storing the password on-chain makes it visible to everyone and no longer private.
+### [H-1] Storing the password on-chain makes it visible to everyone and no longer private.
 
 **Description:**
 All data stored on-chain is visible to everyone, and can be read by anyone. The `PasswordStore::s_password` variable is intended to be a private variable and only accessed through.
@@ -32,7 +32,7 @@ Output: myPassword
 **Recommended Mitigation:**
 The recommended mitigation is to store the password off-chain, hash it, and store the hash on-chain.
 
-### [S-#] Missing access control on `PasswordStore::setPassword` allows anyone to change the password.
+### [H-2] Missing access control on `PasswordStore::setPassword` allows anyone to change the password.
 
 **Description:**
 The `PasswordStore::setPassword` function does not have any access control, allowing anyone to change the password. This is a critical vulnerability as it allows anyone to change the password, breaking the functionality of the protocol.
@@ -101,7 +101,7 @@ function setPassword(string memory newPassword) external  {
 }
 ```
 
-### [S-#] The `PasswordStore::getPassword` function does not have any paramater whereas comments says it does which is confusing.
+### [I-1] The `PasswordStore::getPassword` function does not have any paramater whereas comments says it does which is confusing.
 
 **Description:**
 The `PasswordStore::getPassword` function signature is `function getPassword() external view returns (string memory)` but the natspec say it is `function getPassword(string memory newPassword) external view returns (string memory)`. This is confusing and can lead to confusion.
